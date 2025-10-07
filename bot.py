@@ -1,7 +1,7 @@
 import asyncio
 import os
 import logging
-from aiogram import Bot, Dispatcher, types
+from aiogram import Bot, Dispatcher, types, F
 from aiogram.client.default import DefaultBotProperties
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 
@@ -39,7 +39,7 @@ async def send_to_all_groups():
         logging.error(f"Hata: {e}")
 
 # === KOMUT ===
-@dp.message(commands=["start"])
+@dp.message(F.text == "/start")
 async def start_command(msg: types.Message):
     await msg.answer("✅ Bot çalışıyor!\nHer 1 saatte bir tüm gruplara kaydedilen son mesajı gönderecek.")
 
